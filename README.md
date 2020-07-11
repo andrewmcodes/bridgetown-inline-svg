@@ -8,6 +8,7 @@
   <a href="https://depfu.com/github/andrewmcodes/bridgetown-inline-svg?project_id=14094"><img src="https://badges.depfu.com/badges/54fe87f2b14868b7c6e69aa0322e3764/count.svg" alt="Depfu"></a>
   <a href="https://codeclimate.com/github/andrewmcodes/bridgetown-inline-svg/maintainability"><img src="https://api.codeclimate.com/v1/badges/f9756d6568f43c7a407b/maintainability" /></a>
   <a href="https://www.codacy.com/manual/andrewmcodes/bridgetown-inline-svg?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=andrewmcodes/bridgetown-inline-svg&amp;utm_campaign=Badge_Grade"><img src="https://app.codacy.com/project/badge/Grade/caad1b16367242ff973fe2e977985364" alt="Codacy Badge"></a>
+  <a href='https://coveralls.io/github/andrewmcodes/bridgetown-inline-svg?branch=main'><img src='https://coveralls.io/repos/github/andrewmcodes/bridgetown-inline-svg/badge.svg?branch=main' alt='Coverage Status' /></a>
   <img alt="Tests" src="https://github.com/andrewmcodes/bridgetown-inline-svg/workflows/Tests/badge.svg" />
   <img alt="Linters" src="https://github.com/andrewmcodes/bridgetown-inline-svg/workflows/Linters/badge.svg" />
 </p>
