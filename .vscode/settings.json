@@ -20,6 +20,7 @@
   // GIT
   "git.ignoreLimitWarning": true,
   "conventionalCommits.scopes": [
-    "release"
+    "release",
+    "dependencies"
   ]
 }
