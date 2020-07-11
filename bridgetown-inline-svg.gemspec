@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   Supports custom DOM Attributes parameters and variables interpretation.
   EOF
   spec.homepage = "https://github.com/andrewmcodes/bridgetown-inline-svg"
-  spec.license = "MIT"
+  spec.license = "GPL-3.0"
 
   spec.metadata = {
     "bug_tracker_uri" => "#{spec.homepage}/issues",
