@@ -37,7 +37,7 @@ or add the following to your `Gemfile`:
 
 ```ruby
 group :bridgetown_plugins do
-  gem "bridgetown-inline-svg", "~> 0.0.1"
+  gem "bridgetown-inline-svg", "~> 1.0.0"
 end
 ```
 
