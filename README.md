@@ -22,6 +22,7 @@
 - [Author](#author)
 - [Contributing](#contributing)
 - [Show your support](#show-your-support)
+- [Acknowledgement](#acknowledgement)
 - [License](#license)
 
 ## Installation
@@ -123,6 +124,10 @@ Contributions, issues and feature requests are welcome!<br />Feel free to check 
 ## Show your support
 
 Give a ⭐️ if this project helped you!
+
+## Acknowledgement
+
+This project was initially forked from [jekyll-inline-svg](https://github.com/sdumetz/jekyll-inline-svg).
 
 ## License
 
