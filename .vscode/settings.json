@@ -1,0 +1,22 @@
+{
+  // EDITOR
+  "editor.formatOnSave": true,
+  // "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[ruby]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "rebornix.ruby"
+  },
+  // RUBY EXTENSION
+  "ruby.useLanguageServer": true,
+  "ruby.lintDebounceTime": 1500,
+  "ruby.useBundler": true,
+  "ruby.lint": {
+    "standard": true,
+    "rubocop": false
+  },
+  "ruby.format": "standard",
+  // SOLARGRAPH EXTENSION
+  "solargraph.diagnostics": true,
+  // GIT
+  "git.ignoreLimitWarning": true
+}

@@ -1,0 +1,3 @@
+bump:
+  file: lib/bridgetown-inline-svg/version.rb
+  skip_ci: true
