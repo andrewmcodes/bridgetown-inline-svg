@@ -11,8 +11,6 @@
 
 > SVG optimizer and inliner for Bridgetown
 
-### 🏠 [Homepage](https://github.com/andrewmcodes/bridgetown-inline-svg)
-
 - [Installation](#installation)
   - [Optional configuration options](#optional-configuration-options)
 - [Usage](#usage)

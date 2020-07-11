@@ -1,3 +1,4 @@
 bump:
   file: lib/bridgetown-inline-svg/version.rb
   skip_ci: true
+  message: "feat(release): :bookmark: Bump %{name} to %{version} %{skip_ci}"

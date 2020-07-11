@@ -18,5 +18,8 @@
   // SOLARGRAPH EXTENSION
   "solargraph.diagnostics": true,
   // GIT
-  "git.ignoreLimitWarning": true
+  "git.ignoreLimitWarning": true,
+  "conventionalCommits.scopes": [
+    "release"
+  ]
 }
