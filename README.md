@@ -135,5 +135,3 @@ Copyright © 2017-2020 [Sebastien Dumetz](https://github.com/sdumetz)
 Copyright © 2020 [Andrew Mason](https://github.com/andrewmcodes)
 
 The following code is a derivative work of the code from the [jekyll-inline-svg](https://github.com/sdumetz/jekyll-inline-svg) project, which is licensed GPLv3. This code therefore is also licensed under the terms of the GNU Public License, verison 3.
-
-<a href="https://app.fossa.com/projects/git%2Bgithub.com%2Fandrewmcodes%2Fbridgetown-inline-svg?ref=badge_large" alt="FOSSA Status"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2Fandrewmcodes%2Fbridgetown-inline-svg.svg?type=large"/></a>
