@@ -4,6 +4,7 @@
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   </a>
   <a href="https://badge.fury.io/rb/bridgetown-inline-svg"><img src="https://badge.fury.io/rb/bridgetown-inline-svg.svg" alt="Gem Version" height="18"></a>
+<a href="https://app.fossa.com/projects/git%2Bgithub.com%2Fandrewmcodes%2Fbridgetown-inline-svg?ref=badge_shield" alt="FOSSA Status"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2Fandrewmcodes%2Fbridgetown-inline-svg.svg?type=shield"/></a>
   <a href="https://depfu.com"><img src="https://badges.depfu.com/badges/54fe87f2b14868b7c6e69aa0322e3764/status.svg" alt="Depfu"></a>
   <a href="https://depfu.com/github/andrewmcodes/bridgetown-inline-svg?project_id=14094"><img src="https://badges.depfu.com/badges/54fe87f2b14868b7c6e69aa0322e3764/count.svg" alt="Depfu"></a>
   <a href="https://codeclimate.com/github/andrewmcodes/bridgetown-inline-svg/maintainability"><img src="https://api.codeclimate.com/v1/badges/f9756d6568f43c7a407b/maintainability" /></a>
@@ -24,6 +25,9 @@
 - [Show your support](#show-your-support)
 - [Acknowledgement](#acknowledgement)
 - [License](#license)
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fandrewmcodes%2Fbridgetown-inline-svg.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fandrewmcodes%2Fbridgetown-inline-svg?ref=badge_large)
 
 ## Installation
 
