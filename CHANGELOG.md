@@ -1,6 +1,11 @@
-# Change log
+# Changelog
 
 # [](https://github.com/andrewmcodes/bridgetown-inline-svg/compare/v0.0.1...v) (2020-07-11)
+
+
+### Features
+
+* **dependencies:** :heavy_plus_sign: Add simplecov and coveralls ([1369d37](https://github.com/andrewmcodes/bridgetown-inline-svg/commit/1369d3756d7c55ea9015e0cb1dda34723d6eff82))
 
 
 
