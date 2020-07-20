@@ -6,5 +6,11 @@
   <body>
     THIS IS MY LAYOUT
     {{ content }}
+
+    {% render "navbar" site: site %}
+
+    <div id="layout">
+      {% svg images/square.svg width: 100 height: 100 %}
+    </div>
   </body>
 </html>
