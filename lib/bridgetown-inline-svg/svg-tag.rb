@@ -130,7 +130,7 @@ module BridgetownInlineSvg
       # params = @params
       file = File.open(svg_file, "rb").read
 
-      conf = site.config['svg'] || {}
+      conf = site.config["svg"] || {}
 
       if conf["optimize"] == true
         SvgOptimizer.optimize(file, [create_plugin(params)] + PLUGINS)
