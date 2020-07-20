@@ -74,7 +74,7 @@ module BridgetownInlineSvg
       matched = markup.strip.match(PATH_SYNTAX)
       unless matched
         raise SyntaxError, <<~END
-          Syntax Error in tag 'highlight' while parsing the following markup:
+          Syntax Error in tag 'svg' while parsing the following markup:
           #{markup}
           Valid syntax: svg <path> [property=value]
         END
@@ -119,6 +119,7 @@ module BridgetownInlineSvg
       # check if given name is a variable. Otherwise use it as a file name
       svg_file = Bridgetown.sanitized_path(site.source, interpolate(@svg, context))
       return unless svg_file
+
       add_file_to_dependency(site, svg_file, context)
       # replace variables with their current value
       params = split_params(@params, context)
@@ -128,15 +129,16 @@ module BridgetownInlineSvg
       end
       # params = @params
       file = File.open(svg_file, "rb").read
-      conf = lookup_variable(context, "site.svg")
+
+      conf = site.config["svg"] || {}
+
       if conf["optimize"] == true
-        xml = SvgOptimizer.optimize(file, [create_plugin(params)] + PLUGINS)
+        SvgOptimizer.optimize(file, [create_plugin(params)] + PLUGINS)
       else
         xml = Nokogiri::XML(file)
         params.each { |key, val| xml.root.set_attribute(key, val) }
-        xml = xml.root.to_xml
+        xml.root.to_xml
       end
-      xml
     end
   end
 end
