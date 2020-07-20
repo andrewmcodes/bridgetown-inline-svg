@@ -1,0 +1,24 @@
+---
+# Docker Compose 2.4 is for local development
+# https://www.heroku.com/podcasts/codeish/57-discussing-docker-containers-and-kubernetes-with-a-docker-captain - Source on that.
+version: '2.4'
+
+x-app: &app
+  image: bridetown-inline-svg:latest
+  mem_limit: 512m
+  build:
+    context: .
+    dockerfile: Dockerfile
+    target: development
+  volumes:
+    - .:/usr/src/app:cached
+    - bundler:/usr/local/bundle:delegated
+
+services:
+  web:
+    <<: *app
+    command: >
+      bash -c "bundle check || bundle install &&
+      rspec"
+volumes:
+  bundler:
