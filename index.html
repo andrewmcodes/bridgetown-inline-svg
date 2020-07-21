@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="bridgetown-inline-svg : SVG optimizer and inliner for Bridgetown">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>bridgetown-inline-svg</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/andrewmcodes/bridgetown-inline-svg">View on GitHub</a>
+
+          <h1 id="project_title">bridgetown-inline-svg</h1>
+          <h2 id="project_tagline">SVG optimizer and inliner for Bridgetown</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/andrewmcodes/bridgetown-inline-svg/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/andrewmcodes/bridgetown-inline-svg/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><img src="https://github.com/andrewmcodes/bridgetown-inline-svg/blob/main/media/banner.png" alt="banner"></p>
+<ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#optional-configuration">Optional Configuration</a></li>
+<li><a href="#demo">Demo</a></li>
+<li>
+<a href="#usage">Usage</a>
+<ul>
+<li>
+<a href="#attributes">Attributes</a>
+<ul>
+<li><a href="#height-and-width">Height and Width</a></li>
+</ul>
+</li>
+<li><a href="#paths">Paths</a></li>
+<li><a href="#variables">Variables</a></li>
+<li><a href="#optimizations">Optimizations</a></li>
+</ul>
+</li>
+<li><a href="#contributing">Contributing</a></li>
+<li><a href="#acknowledgement">Acknowledgement</a></li>
+<li><a href="#license">License</a></li>
+</ul>
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+<p>Run this command to add this plugin to your site's Gemfile:</p>
+<div class="highlight highlight-source-shell"><pre>bundle add bridgetown-inline-svg -g bridgetown_plugins</pre></div>
+<p>or add the following to your <code>Gemfile</code>:</p>
+<div class="highlight highlight-source-ruby"><pre><span class="pl-en">group</span> <span class="pl-pds">:bridgetown_plugins</span> <span class="pl-k">do</span>
+  <span class="pl-en">gem</span> <span class="pl-s">"bridgetown-inline-svg"</span><span class="pl-kos">,</span> <span class="pl-s">"~&gt; 1.1.0"</span>
+<span class="pl-k">end</span></pre></div>
+<h2>
+<a id="optional-configuration" class="anchor" href="#optional-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Optional Configuration</h2>
+<div class="highlight highlight-source-yaml"><pre><span class="pl-c"><span class="pl-c">#</span> bridgetown.config.yml</span>
+
+<span class="pl-ent">svg</span>:
+  <span class="pl-c"><span class="pl-c">#</span> Whether to optimize the SVG files with svg_optimizer.</span>
+  <span class="pl-c"><span class="pl-c">#</span></span>
+  <span class="pl-c"><span class="pl-c">#</span> Type: Boolean</span>
+  <span class="pl-c"><span class="pl-c">#</span> Optional: true</span>
+  <span class="pl-c"><span class="pl-c">#</span> Default: false</span>
+  <span class="pl-ent">optimize</span>: <span class="pl-c1">true</span></pre></div>
+<h2>
+<a id="demo" class="anchor" href="#demo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Demo</h2>
+<p><a href="https://github.com/andrewmcodes/bridgetown-inline-svg-starter">bridgetown-inline-svg-starter</a></p>
+<p>This starter can be used to reproduce issues as well as provide an example of the plugin's usage.</p>
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+<p>This plugin provides the <code>svg</code> Liquid tag to your site.</p>
+<p>Use the tag in your pages, collections, components, etc. by passing the tag the name of a file:</p>
+<div class="highlight highlight-text-html-liquid"><pre><span class="pl-s1">{% svg path/to/my.svg %}</span></pre></div>
+<p><strong>Note</strong>: The <code>.svg</code> file extension is required.</p>
+<h3>
+<a id="attributes" class="anchor" href="#attributes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Attributes</h3>
+<p>Set attributes just like you would in HTML.</p>
+<p>For example:</p>
+<div class="highlight highlight-text-html-liquid"><pre><span class="pl-s1">{% svg assets/svg/square.svg width=24 class="text-indigo-600" foo="bar" %}</span></pre></div>
+<p>Bridgetown will include the SVG file in your output HTML like this:</p>
+<div class="highlight highlight-text-html-basic"><pre><span class="pl-kos">&lt;</span><span class="pl-ent">svg</span> <span class="pl-c1">width</span>="<span class="pl-s">24</span>" <span class="pl-c1">height</span>="<span class="pl-s">24</span>" <span class="pl-c1">class</span>="<span class="pl-s">text-indigo-600</span>" <span class="pl-c1">foo</span>="<span class="pl-s">bar</span>" <span class="pl-c1">version</span>="<span class="pl-s">1.1</span>" <span class="pl-c1">id</span>="<span class="pl-s">square</span>" <span class="pl-c1">xmlns</span>="<span class="pl-s">http://www.w3.org/2000/svg</span>" <span class="pl-c1">x</span>="<span class="pl-s">0</span>" <span class="pl-c1">y</span>="<span class="pl-s">0</span>" <span class="pl-c1">viewBox</span>="<span class="pl-s">0 0 24 24</span>" <span class="pl-kos">&gt;</span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">rect</span> <span class="pl-c1">width</span>="<span class="pl-s">20</span>" <span class="pl-c1">height</span>="<span class="pl-s">20</span>" <span class="pl-c1">x</span>="<span class="pl-s">2</span>" <span class="pl-c1">y</span>="<span class="pl-s">2</span>" /&gt;
+<span class="pl-kos">&lt;/</span><span class="pl-ent">svg</span><span class="pl-kos">&gt;</span></pre></div>
+<p><strong>Note</strong>: Anything can be passed through, but we'd recommend only setting <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg#Attributes">valid attributes</a>.</p>
+<h4>
+<a id="height-and-width" class="anchor" href="#height-and-width" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Height and Width</h4>
+<p><code>height</code> is automatically set to match <code>width</code> if omitted, and vice versa. Height specifically can't be left unset because IE11 won't use the viewport attribute to calculate the image's aspect ratio.</p>
+<h3>
+<a id="paths" class="anchor" href="#paths" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Paths</h3>
+<p>Paths with a space should be quoted with single or double quotes:</p>
+<div class="highlight highlight-text-html-liquid"><pre><span class="pl-s1">{% svg "/path/to/my asset.svg" %}</span></pre></div>
+<p>If the path is not in quotes, anything after the <strong>first space</strong> will be considered an attribute.</p>
+<p>Relative paths and absolute paths will both be interpreted from Bridgetown's <code>src</code> directory. So both:</p>
+<div class="highlight highlight-text-html-liquid"><pre><span class="pl-s1">{% svg "/path/to/my.svg" %}</span>
+<span class="pl-s1">{% svg "path/to/my.svg" %}</span></pre></div>
+<p>Should resolve to <code>/your/site/src/path/to/my.svg</code> and are equivalent.</p>
+<h3>
+<a id="variables" class="anchor" href="#variables" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Variables</h3>
+<p>Liquid variables will be interpolated if enclosed in double brackets:</p>
+<div class="highlight highlight-text-html-liquid"><pre><span class="pl-s1">{% assign svg_name="my" %}</span>
+<span class="pl-s1">{% assign size=40 %}</span>
+<span class="pl-s1">{% svg "/path/to/{{svg_name}}.svg" width="{{size}}" %}</span></pre></div>
+<p>This is especially helpful inside of Liquid components!</p>
+<h3>
+<a id="optimizations" class="anchor" href="#optimizations" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Optimizations</h3>
+<p>Some processing is done to remove useless data when enabled:</p>
+<ul>
+<li>metadata</li>
+<li>comments</li>
+<li>unused groups</li>
+<li>Other filters from <a href="https://github.com/fnando/svg_optimizer">svg_optimizer</a>
+</li>
+<li>default size</li>
+</ul>
+<p>If any important data gets removed, or the output SVG looks different from input, it's a bug. Please file an issue to this repository describing your problem.</p>
+<p>It does not perform any input validation on attributes. They will be appended as-is to the root node.</p>
+<h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contributing</h2>
+<p>Contributions, issues and feature requests are welcome!<br>Feel free to check <a href="https://github.com/andrewmcodes/bridgetown-inline-svg/issues">issues page</a>. You can also take a look at the <a href="https://github.com/andrewmcodes/bridgetown-inline-svg/blob/main/CONTRIBUTING.md">contributing guide</a>.</p>
+<h2>
+<a id="acknowledgement" class="anchor" href="#acknowledgement" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Acknowledgement</h2>
+<p>This project was initially forked from <a href="https://github.com/sdumetz/jekyll-inline-svg">jekyll-inline-svg</a>.</p>
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+<p>Copyright © 2017-2020 <a href="https://github.com/sdumetz">Sebastien Dumetz</a>
+Copyright © 2020 <a href="https://github.com/andrewmcodes">Andrew Mason</a></p>
+<p>The following code is a derivative work of the code from the <a href="https://github.com/sdumetz/jekyll-inline-svg">jekyll-inline-svg</a> project, which is licensed GPLv3. This code therefore is also licensed under the terms of the GNU Public License, verison 3.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">bridgetown-inline-svg maintained by <a href="https://github.com/andrewmcodes">andrewmcodes</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
