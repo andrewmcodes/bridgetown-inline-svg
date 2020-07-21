@@ -1,5 +1,5 @@
 <div align="center">
-  <img alt="Banner" width="100%" height="auto" src="media/banner.png" />
+  <img alt="Banner" height="350" src="media/banner.png" />
   <h1>bridgetown-inline-svg</h1>
   <p>
     <a href="LICENSE" target="_blank">
