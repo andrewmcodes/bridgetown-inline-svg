@@ -1,5 +1,6 @@
-<h1 align="center">Welcome to bridgetown-inline-svg 👋</h1>
-<p>
+<img align="center" alt="Banner" src="media/banner.png" />
+<h1 align="center">bridgetown-inline-svg</h1>
+<p align="center">
   <a href="LICENSE" target="_blank">
     <img alt="License: GPL-3.0" src="https://img.shields.io/github/license/andrewmcodes/bridgetown-inline-svg" />
   </a>
@@ -12,8 +13,6 @@
   <img alt="Tests" src="https://github.com/andrewmcodes/bridgetown-inline-svg/workflows/Tests/badge.svg" />
   <img alt="Linters" src="https://github.com/andrewmcodes/bridgetown-inline-svg/workflows/Linters/badge.svg" />
 </p>
-
-> SVG optimizer and inliner for Bridgetown
 
 - [Installation](#installation)
 - [Optional Configuration](#optional-configuration)
