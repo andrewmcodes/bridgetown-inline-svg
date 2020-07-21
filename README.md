@@ -17,6 +17,7 @@
 
 - [Installation](#installation)
 - [Optional Configuration](#optional-configuration)
+- [Demo](#demo)
 - [Usage](#usage)
   - [Attributes](#attributes)
     - [Height and Width](#height-and-width)
@@ -56,6 +57,12 @@ svg:
   # Default: false
   optimize: true
 ```
+
+## Demo
+
+[bridgetown-inline-svg-starter](https://github.com/andrewmcodes/bridgetown-inline-svg-starter)
+
+This starter can be used to reproduce issues as well as provide an example of the plugin's usage.
 
 ## Usage
 
