@@ -16,12 +16,14 @@
 > SVG optimizer and inliner for Bridgetown
 
 - [Installation](#installation)
-  - [Optional configuration options](#optional-configuration-options)
+- [Optional Configuration](#optional-configuration)
 - [Usage](#usage)
+  - [Attributes](#attributes)
+    - [Height and Width](#height-and-width)
+  - [Paths](#paths)
+  - [Variables](#variables)
   - [Optimizations](#optimizations)
-- [Author](#author)
 - [Contributing](#contributing)
-- [Show your support](#show-your-support)
 - [Acknowledgement](#acknowledgement)
 - [License](#license)
 
@@ -41,59 +43,86 @@ group :bridgetown_plugins do
 end
 ```
 
-### Optional configuration options
+## Optional Configuration
 
-Optimization is opt-in and can be enabled by adding this to your `bridgetown.config.yml`
+```yml
+# bridgetown.config.yml
 
-```
 svg:
+  # Whether to optimize the SVG files with svg_optimizer.
+  #
+  # Type: Boolean
+  # Optional: true
+  # Default: false
   optimize: true
 ```
 
 ## Usage
 
-Use the Liquid tag in your pages :
+This plugin provides the `svg` Liquid tag to your site.
+
+Use the tag in your pages, collections, components, etc. by passing the tag the name of a file:
 
 ```liquid
-{% svg /path/to/square.svg width=24 foo="bar" %}
+{% svg path/to/my.svg %}
 ```
 
-Bridgetown will include the svg file in your output HTML like this :
+**Note**: The `.svg` file extension is required.
+
+### Attributes
+
+Set attributes just like you would in HTML.
+
+For example:
+
+```liquid
+{% svg assets/svg/square.svg width=24 class="text-indigo-600" foo="bar" %}
+```
+
+Bridgetown will include the SVG file in your output HTML like this:
 
 ```html
-<svg width=24 foo="bar" version="1.1" id="square" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 24 24" >
+<svg width="24" height="24" class="text-indigo-600" foo="bar" version="1.1" id="square" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 24 24" >
   <rect width="20" height="20" x="2" y="2" />
 </svg>
 ```
 
-**Note** : You will generally want to set the width/height of your SVG or a `style` attribute, but anything can be passed through.
+**Note**: Anything can be passed through, but we'd recommend only setting [valid attributes](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg#Attributes).
 
-Paths with a space should be quoted :
+#### Height and Width
 
-```liquid
-{% svg "/path/to/foo bar.svg" %}
-# or :
-{% svg '/path/to/foo bar.svg' %}
-```
-Otherwise anything after the first space will be considered an attribute.
+`height` is automatically set to match `width` if omitted, and vice versa. Height specifically can't be left unset because IE11 won't use the viewport attribute to calculate the image's aspect ratio.
 
-Liquid variables will be interpreted if enclosed in double brackets :
+### Paths
+
+Paths with a space should be quoted with single or double quotes:
 
 ```liquid
-{% assign size=40 %}
-{% svg "/path/to/{{site.foo-name}}.svg" width="{{size}}" %}
+{% svg "/path/to/my asset.svg" %}
 ```
 
-`height` is automatically set to match `width` if omitted. It can't be left unset because IE11 won't use the viewport attribute to calculate the image's aspect ratio.
+If the path is not in quotes, anything after the __first space__ will be considered an attribute.
 
 Relative paths and absolute paths will both be interpreted from Bridgetown's `src` directory. So both:
 
 ```liquid
-{% svg "/path/to/foo.svg" %}
-{% svg "path/to/foo.svg"  %}
+{% svg "/path/to/my.svg" %}
+{% svg "path/to/my.svg" %}
 ```
 
-Should resolve to `/your/site/src/path/to/foo.svg`.
+Should resolve to `/your/site/src/path/to/my.svg` and are equivalent.
+
+### Variables
+
+Liquid variables will be interpolated if enclosed in double brackets:
+
+```liquid
+{% assign svg_name="my" %}
+{% assign size=40 %}
+{% svg "/path/to/{{svg_name}}.svg" width="{{size}}" %}
+```
+
+This is especially helpful inside of Liquid components!
 
 ### Optimizations
 
@@ -109,21 +138,9 @@ If any important data gets removed, or the output SVG looks different from input
 
 It does not perform any input validation on attributes. They will be appended as-is to the root node.
 
-## Author
-
-👤 **Andrew Mason**
-
-* Website: https://www.andrewm.codes
-* Twitter: [@andrewmcodes](https://twitter.com/andrewmcodes)
-* Github: [@andrewmason](https://github.com/andrewmason)
-
 ## Contributing
 
 Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/andrewmcodes/bridgetown-inline-svg/issues). You can also take a look at the [contributing guide](https://github.com/andrewmcodes/bridgetown-inline-svg/blob/main/CONTRIBUTING.md).
-
-## Show your support
-
-Give a ⭐️ if this project helped you!
 
 ## Acknowledgement
 
