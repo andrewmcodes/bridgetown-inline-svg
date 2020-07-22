@@ -1,6 +1,6 @@
-# Converts the attributes passed to the tag into a path & hash.
+# Converts the mark passed to the tag into a path & a hash of arguments.
 module BridgetownInlineSvg
-  class Attributes
+  class Markup
     attr_reader :markup
 
     # Separate file path from other attributes

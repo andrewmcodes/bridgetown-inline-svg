@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe BridgetownInlineSvg::Attributes do
+describe BridgetownInlineSvg::Markup do
   describe "::parse" do
     subject { described_class.parse(markup) }
     let(:svg) { svg, _params = subject; svg }

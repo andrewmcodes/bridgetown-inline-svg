@@ -11,7 +11,7 @@ module BridgetownInlineSvg
       @context = builder.context
       markup = Liquid::Template.parse(markup).render(@context)
 
-      @svg_path, @attributes = Attributes.parse(markup)
+      @svg_path, @attributes = Markup.parse(markup)
       @svg_path = Bridgetown.sanitized_path(site.source, @svg_path)
 
       return unless @svg_path
