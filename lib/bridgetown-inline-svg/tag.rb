@@ -1,7 +1,9 @@
 module BridgetownInlineSvg
   class Tag < Bridgetown::Builder
-    attr_accessor :attributes
-    attr_accessor :context
+    attr_reader :attributes
+    attr_reader :context
+    attr_reader :markup
+    attr_reader :svg_path
 
     def build
       liquid_tag "svg", :render
@@ -9,15 +11,12 @@ module BridgetownInlineSvg
 
     def render(markup, builder)
       @context = builder.context
+      @markup = markup
 
-      # Parse any variables in our Markup
-      markup = Liquid::Template.parse(markup).render(@context)
+      interpolate_variables_in_markup!
+      set_svg_path_and_attributes!
 
-      # Get the path & attributes from that markup
-      @svg_path, @attributes = Markup.parse(markup)
-      @svg_path = Bridgetown.sanitized_path(site.source, @svg_path)
-
-      return unless @svg_path
+      return unless svg_path
 
       add_file_to_dependency!
 
@@ -26,8 +25,14 @@ module BridgetownInlineSvg
 
     private
 
-    def render_svg
-      render_svg_class.new(@svg_path, @attributes).call
+    # Parse any variables in our Markup
+    def interpolate_variables_in_markup!
+      @markup = Liquid::Template.parse(markup).render(context)
+    end
+
+    def set_svg_path_and_attributes!
+      @svg_path, @attributes = Markup.parse(markup)
+      @svg_path = Bridgetown.sanitized_path(site.source, svg_path)
     end
 
     # When we change the svg, it'll regenerate our page.
@@ -35,9 +40,13 @@ module BridgetownInlineSvg
       if context.registers[:page]&.key?("path")
         site.regenerator.add_dependency(
           site.in_source_dir(context.registers[:page]["path"]),
-          @svg_path
+          svg_path
         )
       end
+    end
+
+    def render_svg
+      render_svg_class.new(svg_path, attributes).call
     end
 
     def render_svg_class
