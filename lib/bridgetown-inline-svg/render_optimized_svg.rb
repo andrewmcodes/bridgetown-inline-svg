@@ -1,7 +1,7 @@
 require "svg_optimizer"
 
 module BridgetownInlineSvg
-  class RenderSvgOptimized < RenderSvg
+  class RenderOptimizedSvg < RenderSvg
     PLUGINS_BLOCKLIST = [
       SvgOptimizer::Plugins::CleanupId
     ]

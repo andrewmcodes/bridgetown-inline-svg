@@ -50,7 +50,7 @@ module BridgetownInlineSvg
     end
 
     def render_svg_class
-      options["optimize"] == true ? RenderSvgOptimized : RenderSvg
+      options["optimize"] == true ? RenderOptimizedSvg : RenderSvg
     end
 
     def options
