@@ -30,6 +30,5 @@ module BridgetownInlineSvg
       mod.set(@attributes)
       mod
     end
-    
   end
 end

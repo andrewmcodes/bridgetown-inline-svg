@@ -38,7 +38,7 @@ describe(BridgetownInlineSvg) do
       end
 
       it "render site" do
-        expect( File.exist?(dest_dir("index.html")) ).to eq(true)
+        expect(File.exist?(dest_dir("index.html"))).to eq(true)
       end
 
       it "exports svg" do

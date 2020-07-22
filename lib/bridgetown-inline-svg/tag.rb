@@ -18,7 +18,7 @@ module BridgetownInlineSvg
       @svg_path = Bridgetown.sanitized_path(site.source, @svg_path)
 
       return unless @svg_path
-      
+
       add_file_to_dependency!
 
       render_svg
@@ -39,7 +39,7 @@ module BridgetownInlineSvg
         )
       end
     end
-    
+
     def render_svg_class
       options["optimize"] == true ? RenderSvgOptimized : RenderSvg
     end

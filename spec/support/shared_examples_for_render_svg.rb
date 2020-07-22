@@ -16,14 +16,14 @@ shared_examples "RenderSvg" do
     end
 
     context "given attributes which override the svg values" do
-      let(:attributes) { { width: 10, height: 10 } }
+      let(:attributes) { {width: 10, height: 10} }
 
       it { is_expected.to include("width=\"10\"") }
       it { is_expected.to include("height=\"10\"") }
     end
 
     context "given attributes which add new attributes to the svg" do
-      let(:attributes) { { "data-attribute": "Sample" } }
+      let(:attributes) { {"data-attribute": "Sample"} }
 
       it { is_expected.to include("data-attribute=\"Sample\"") }
     end

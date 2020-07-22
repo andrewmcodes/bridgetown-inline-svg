@@ -18,12 +18,12 @@ module BridgetownInlineSvg
     #    - match a double-quoted string
     #    - match a single-quoted string
     #    - match an unquoted string matching the set : [\w\.\-#]
-    # 
+    #
     PARAM_SYNTAX = %r{
     ([\w-]+)\s*=\s*
       (?:"([^"\\]*(?:\\.[^"\\]*)*)"|'([^'\\]*(?:\\.[^'\\]*)*)'|([\w.\-#]+))
     }x
-    
+
     def self.parse(markup)
       new(markup).call
     end
@@ -92,6 +92,5 @@ module BridgetownInlineSvg
         Valid syntax: svg <path> [property=value]
       END
     end
-    
   end
 end
