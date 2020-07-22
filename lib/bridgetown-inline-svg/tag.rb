@@ -9,8 +9,11 @@ module BridgetownInlineSvg
 
     def render(markup, builder)
       @context = builder.context
+
+      # Parse any variables in our Markup
       markup = Liquid::Template.parse(markup).render(@context)
 
+      # Get the path & attributes from that markup
       @svg_path, @attributes = Markup.parse(markup)
       @svg_path = Bridgetown.sanitized_path(site.source, @svg_path)
 
@@ -24,11 +27,7 @@ module BridgetownInlineSvg
     private
 
     def render_svg
-      if options["optimize"] == true
-        RenderSvgOptimized.new(@svg_path, @attributes).call
-      else
-        RenderSvg.new(@svg_path, @attributes).call
-      end
+      render_svg_class.new(@svg_path, @attributes).call
     end
 
     # When we change the svg, it'll regenerate our page.
@@ -41,6 +40,10 @@ module BridgetownInlineSvg
       end
     end
     
+    def render_svg_class
+      options["optimize"] == true ? RenderSvgOptimized : RenderSvg
+    end
+
     def options
       @options ||= config["svg"] || {}
     end

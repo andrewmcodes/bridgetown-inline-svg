@@ -1,4 +1,4 @@
-require 'nokogiri'
+require "nokogiri"
 
 module BridgetownInlineSvg
   class RenderSvg

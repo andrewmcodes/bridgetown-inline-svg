@@ -46,9 +46,14 @@ describe BridgetownInlineSvg::Markup do
       it { expect(svg).to eql("/path/to/{{foo}}") }
     end
 
-    context "don't parse parameters" do
+    context "parses parameters into a hash" do
       let(:markup) { "'/path/to/foo space' id='bar' style=\"hello\"" }
       it { expect(params).to eq({ id: "bar", style: "hello" }) }
+    end
+
+    context "includes hashes within params" do
+      let(:markup) { "svg images/square.svg  role=\"navigation\" data-foo=\"bar\" fill=\"#ffffff\" stroke=#000000" }
+      it { expect(params).to eq({ "data-foo": "bar", fill: "#ffffff", role: "navigation", stroke: "#000000" }) }
     end
 
     context "parse Liquids colon seperated variables" do

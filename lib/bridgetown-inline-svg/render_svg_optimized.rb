@@ -1,4 +1,4 @@
-require 'svg_optimizer'
+require "svg_optimizer"
 
 module BridgetownInlineSvg
   class RenderSvgOptimized < RenderSvg

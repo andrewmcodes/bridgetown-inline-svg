@@ -78,7 +78,7 @@ module BridgetownInlineSvg
     # IE11 requires we have both width & height attributes
     # on SVG elements
     def params_set_height_if_missing!
-      if @params.key?(:width) && !@params.key?(:height)
+      if @params.key?(:width) && @params[:width] != "" && !@params.key?(:height)
         @params[:height] = @params[:width]
       end
     end

@@ -2,13 +2,13 @@ require "spec_helper"
 require "nokogiri"
 
 describe(BridgetownInlineSvg) do
-  def read(f)
-    File.read(dest_dir(f))
+  def read(file)
+    File.read(dest_dir(file))
   end
 
   # return an array of the page's svgs
-  def parse(f)
-    Nokogiri::HTML(read(f))
+  def parse(file)
+    Nokogiri::HTML(read(file))
   end
 
   [
@@ -27,7 +27,8 @@ describe(BridgetownInlineSvg) do
     })
   ].each do |config|
     (is_opt = config["svg"]) && (config["svg"]["optimize"] == true)
-    describe "Integration (with #{is_opt ? "" : "no"} optimisation)" do
+
+    describe "Integration - #{is_opt ? "with" : "without"} optimization -" do
       before(:context) do
         site = Bridgetown::Site.new(config)
         site.process
@@ -37,7 +38,7 @@ describe(BridgetownInlineSvg) do
       end
 
       it "render site" do
-        expect(File.exist?(dest_dir("index.html"))).to be_truthy
+        expect( File.exist?(dest_dir("index.html")) ).to eq(true)
       end
 
       it "exports svg" do
