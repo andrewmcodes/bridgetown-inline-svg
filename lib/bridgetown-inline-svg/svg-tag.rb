@@ -1,7 +1,5 @@
 module BridgetownInlineSvg
   class SvgTag < Bridgetown::Builder
-    include Bridgetown::LiquidExtensions
-
     attr_accessor :attributes
     attr_accessor :context
 
@@ -11,38 +9,22 @@ module BridgetownInlineSvg
 
     def render(markup, builder)
       @context = builder.context
+      markup = Liquid::Template.parse(markup).render(@context)
 
-      #markup = interpolate_markup(markup, builder)
-      puts markup.inspect
-      set_attributes!(markup)
+      @svg_path, @attributes = BridgetownInlineSvg::Attributes.parse(markup)
+      @svg_path = Bridgetown.sanitized_path(site.source, @svg_path)
 
-      svg_path = File.join site.source, attributes[0].gsub("../", "")
-      svg_lines = File.readlines(svg_path).map(&:strip).select do |line|
-        line unless line.start_with?("<!", "<?xml")
-      end
-      svg_lines.join
+      return unless @svg_path
+
+      render_svg
     end
 
-    # Find any variables that haven't been interpolated within our markup
-    # and processing them first.
-    def interpolate_markup(markup, builder)
-      markup.scan Liquid::PartialTemplateParser do |variable|
-        markup = markup.sub(Liquid::PartialTemplateParser, lookup_variable(context, variable.first))
-      end
-      markup
-    end
-
-    def set_attributes!(markup)
-      @attributes = {}
-      markup.scan(Liquid::TagAttributes) do |key, value|
-        @attributes[key] = Liquid::Expression.parse(value)
-      end
-
-      # IE11 requires we have both width & height attributes
-      # on SVG elements
-      if @attributes.key?("width") && !@attributes.key?("height")
-        @attributes["height"] = @attributes["width"]
-      end
+    def render_svg
+      file = File.open(@svg_path, File::RDONLY).read
+      
+      xml = Nokogiri::XML(file)
+      @attributes.each { |key, value| xml.root.set_attribute(key, value) }
+      xml.root.to_xml
     end
 
     def options

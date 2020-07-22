@@ -11,49 +11,6 @@ describe(BridgetownInlineSvg::SvgTag) do
     Nokogiri::HTML(read(f))
   end
 
-  describe "#parse_params" do
-    it "parse XML root parameters" do
-      svg, params = BridgetownInlineSvg::SvgTag.parse_params("/path/to/foo size=40 style=\"hello\"")
-      expect(svg).to eq("/path/to/foo")
-      expect(params).to eq("size=40 style=\"hello\"")
-    end
-
-    it "accepts double quoted path" do
-      svg, _params = BridgetownInlineSvg::SvgTag.parse_params("\"/path/to/foo space\"")
-      expect(svg).to eq("/path/to/foo space")
-    end
-
-    it "accepts single quoted path" do
-      svg, _params = BridgetownInlineSvg::SvgTag.parse_params("'/path/to/foo space'")
-      expect(svg).to eq("/path/to/foo space")
-    end
-
-    it "strip leading and trailing spaces" do
-      svg, _params = BridgetownInlineSvg::SvgTag.parse_params(" /path/to/foo ")
-      expect(svg).to eql("/path/to/foo")
-    end
-
-    # required when a variable is defined with leading/trailing space then embedded.
-    it "strip in-quote leading and trailing spaces" do
-      svg, _params = BridgetownInlineSvg::SvgTag.parse_params("'/path/to/foo '")
-      expect(svg).to eql("/path/to/foo")
-    end
-
-    it "keep Liquid variables" do
-      svg, _params = BridgetownInlineSvg::SvgTag.parse_params("/path/to/{{foo}}")
-      expect(svg).to eql("/path/to/{{foo}}")
-    end
-
-    it "don't parse parameters" do
-      _svg, params = BridgetownInlineSvg::SvgTag.parse_params("'/path/to/foo space' id='bar' style=\"hello\"")
-      expect(params).to eq("id='bar' style=\"hello\"")
-    end
-
-    it "raise error on invalid syntax" do
-      expect { BridgetownInlineSvg::SvgTag.parse_params("") }.to raise_error SyntaxError
-    end
-  end
-
   [
     Bridgetown.configuration({
       "svg" => {"optimize" => true},
