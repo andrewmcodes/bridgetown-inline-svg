@@ -3,8 +3,14 @@ require "spec_helper"
 describe BridgetownInlineSvg::Markup do
   describe "::parse" do
     subject { described_class.parse(markup) }
-    let(:svg) { svg, _params = subject; svg }
-    let(:params) { _svg, params = subject; params }
+    let(:svg) do
+      svg, _params = subject
+      svg
+    end
+    let(:params) do
+      _svg, params = subject
+      params
+    end
 
     context "with invalid syntax" do
       let(:markup) { "" }
