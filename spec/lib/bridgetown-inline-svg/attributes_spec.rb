@@ -16,7 +16,7 @@ describe BridgetownInlineSvg::Attributes do
 
       it do
         expect(svg).to eq("/path/to/foo")
-        expect(params).to eq("size=40 style=\"hello\"")
+        expect(params).to eq({ size: 40, style: "hello" })
       end
     end
 
@@ -48,7 +48,12 @@ describe BridgetownInlineSvg::Attributes do
 
     context "don't parse parameters" do
       let(:markup) { "'/path/to/foo space' id='bar' style=\"hello\"" }
-      it { expect(params).to eq("id='bar' style=\"hello\"") }
+      it { expect(params).to eq({ id: "bar", style: "hello" }) }
+    end
+
+    context "parse Liquids colon seperated variables" do
+      let(:markup) { "'/path/to/foo space' width: 25 height:20 id='sample-id'" }
+      it { expect(params).to eq({ width: 25, height: 20, id: "sample-id" }) }
     end
   end
 end
