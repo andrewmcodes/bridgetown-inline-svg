@@ -11,12 +11,12 @@ describe BridgetownInlineSvg::Markup do
       it { expect { subject }.to raise_error(SyntaxError) }
     end
 
-    context "parse XML root parameters" do
+    context "parse parameters" do
       let(:markup) { "/path/to/foo size=40 style=\"hello\"" }
 
       it do
         expect(svg).to eq("/path/to/foo")
-        expect(params).to eq({ size: 40, style: "hello" })
+        expect(params).to eq({ size: "40", style: "hello" })
       end
     end
 
@@ -57,8 +57,8 @@ describe BridgetownInlineSvg::Markup do
     end
 
     context "parse Liquids colon seperated variables" do
-      let(:markup) { "'/path/to/foo space' width: 25 height:20 id='sample-id'" }
-      it { expect(params).to eq({ width: 25, height: 20, id: "sample-id" }) }
+      let(:markup) { "'/path/to/foo space' width: 25 height:20 decimal: 20.20 id='sample-id'" }
+      it { expect(params).to eq({ width: "25", decimal: "20.20", height: "20", id: "sample-id" }) }
     end
   end
 end

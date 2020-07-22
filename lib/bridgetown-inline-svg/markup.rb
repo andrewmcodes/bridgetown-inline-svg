@@ -62,16 +62,14 @@ module BridgetownInlineSvg
     # From: https://github.com/Shopify/liquid/blob/57c9cf64ebc777fe5e92d4408d31a911f087eeb4/lib/liquid/tags/render.rb#L27
     def params_parse_with_liquid_match!
       raw_params.scan(Liquid::TagAttributes) do |key, value|
-        expression = Liquid::Expression.parse(value)
-        @params[key.to_sym] = expression.respond_to?(:name) ? expression.name: expression
+        @params[key.to_sym] = value
       end
     end
 
     # Scan using our regex to support id="some-id"
     def params_parse_with_custom_match!
       raw_params.scan(PARAM_SYNTAX) do |key, group_2, group_3, group_4|
-        expression = Liquid::Expression.parse(group_2 || group_3 || group_4)
-        @params[key.to_sym] = expression.respond_to?(:name) ? expression.name : expression
+        @params[key.to_sym] = (group_2 || group_3 || group_4)
       end
     end
 
