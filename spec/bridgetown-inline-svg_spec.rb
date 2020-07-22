@@ -53,6 +53,7 @@ describe(BridgetownInlineSvg::SvgTag) do
       expect { BridgetownInlineSvg::SvgTag.parse_params("") }.to raise_error SyntaxError
     end
   end
+
   [
     Bridgetown.configuration({
       "svg" => {"optimize" => true},
