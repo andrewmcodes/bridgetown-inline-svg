@@ -1,7 +1,7 @@
 require "spec_helper"
 require "nokogiri"
 
-describe(BridgetownInlineSvg::SvgTag) do
+describe(BridgetownInlineSvg) do
   def read(f)
     File.read(dest_dir(f))
   end
