@@ -45,7 +45,7 @@ module BridgetownInlineSvg
     end
 
     def options
-      @options ||= config["svg"] || {}
+      config["svg"] || {}
     end
   end
 end
