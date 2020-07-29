@@ -4,10 +4,10 @@ module BridgetownInlineSvg
     attr_reader :markup
 
     # Separate file path from other attributes
-    PATH_SYNTAX = %r{
+    PATH_SYNTAX = /
       ^(?<path>[^\s"']+|"[^"]+"|'[^']+')
       (?<params>.*)
-    }x
+    /x.freeze
 
     # Parse the first parameter in a string, giving :
     #  [full_match, param_name, double_quoted_val, single_quoted_val, unquoted_val]
@@ -19,10 +19,10 @@ module BridgetownInlineSvg
     #    - match a single-quoted string
     #    - match an unquoted string matching the set : [\w\.\-#]
     #
-    PARAM_SYNTAX = %r{
+    PARAM_SYNTAX = /
     ([\w-]+)\s*=\s*
       (?:"([^"\\]*(?:\\.[^"\\]*)*)"|'([^'\\]*(?:\\.[^'\\]*)*)'|([\w.\-#]+))
-    }x
+    /x.freeze
 
     def self.parse(markup)
       new(markup).call
@@ -45,7 +45,7 @@ module BridgetownInlineSvg
     end
 
     def path
-      @path ||= matched["path"].sub(%r{^["']}, "").sub(%r{["']$}, "").strip
+      @path ||= matched['path'].sub(/^["']/, '').sub(/["']$/, '').strip
     end
 
     def params
@@ -76,13 +76,11 @@ module BridgetownInlineSvg
     # IE11 requires we have both width & height attributes
     # on SVG elements
     def params_set_height_if_missing!
-      if @params.key?(:width) && @params[:width] != "" && !@params.key?(:height)
-        @params[:height] = @params[:width]
-      end
+      @params[:height] = @params[:width] if @params.key?(:width) && @params[:width] != '' && !@params.key?(:height)
     end
 
     def raw_params
-      @raw_params = matched["params"].strip
+      @raw_params = matched['params'].strip
     end
 
     def raise_exception!
