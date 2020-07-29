@@ -49,13 +49,12 @@ module BridgetownInlineSvg
     end
 
     def params
-      @params = {}
-
-      params_parse_with_liquid_match!
-      params_parse_with_custom_match!
-      params_set_height_if_missing!
-
-      @params
+      @params ||= begin
+                    params_parse_with_liquid_match!
+                    params_parse_with_custom_match!
+                    params_set_height_if_missing!
+                    @params
+                  end
     end
 
     # Scan for arguments using liquids regex
