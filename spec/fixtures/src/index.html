@@ -13,8 +13,13 @@ svgclass: hello
 {% svg images/square.svg  width=24 %}
 {% svg images/square.svg  width=24 height=48 %}
 {% svg images/square.svg width=24 height="" %}
-{% svg images/square.svg width: 24 height: 48 %}
 </div>
+
+<div id="liquid-arguments">
+  {% svg images/square.svg width: 24 height: 48 %}
+  {% svg images/square.svg width="48" width: 24 %}
+</div>
+
 <div id="attributes">
   {% svg images/square.svg  role="navigation" data-foo="bar" fill="#ffffff" stroke=#000000 %}
 </div>

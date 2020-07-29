@@ -59,8 +59,18 @@ describe(BridgetownInlineSvg) do
         expect(data[1].get_attribute("width")).to eql("24")
         # do not set height if forced to empty string
         expect(data[2].get_attribute("height")).to is_opt ? be_falsy : eql("")
+      end
 
-        expect(data[2].get_attribute("width")).to eql("24")
+      context "when liquid arguments (e.g. 'width: 24') are present" do
+        subject { @data.css("#liquid-arguments").css("svg") }
+
+        it "renders SVGs" do
+          expect(subject.count).to eq(2)
+        end
+
+        it "gives precedence to the equals arguments" do
+          expect(subject[1].get_attribute("width")).to eql("48")
+        end
       end
 
       it "keep attributes" do
