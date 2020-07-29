@@ -11,7 +11,7 @@ describe BridgetownInlineSvg::RenderSvg do
     subject { instance_class.call }
 
     it "keeps comment within SVG" do
-      expect(subject).to include('<!-- comment -->')
+      expect(subject).to include("<!-- comment -->")
     end
   end
 end

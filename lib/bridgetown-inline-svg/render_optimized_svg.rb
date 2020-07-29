@@ -4,7 +4,7 @@ module BridgetownInlineSvg
   class RenderOptimizedSvg < RenderSvg
     PLUGINS_BLOCKLIST = [
       SvgOptimizer::Plugins::CleanupId
-    ]
+    ].freeze
 
     PLUGINS = SvgOptimizer::DEFAULT_PLUGINS.delete_if { |plugin|
       PLUGINS_BLOCKLIST.include?(plugin)

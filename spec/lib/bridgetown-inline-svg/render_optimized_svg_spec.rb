@@ -11,7 +11,7 @@ describe BridgetownInlineSvg::RenderOptimizedSvg do
     subject { instance_class.call }
 
     it "removes comment within SVG" do
-      expect(subject).to_not include('<!-- comment -->')
+      expect(subject).to_not include("<!-- comment -->")
     end
   end
 end
