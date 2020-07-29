@@ -59,6 +59,8 @@ describe(BridgetownInlineSvg) do
         expect(data[1].get_attribute("width")).to eql("24")
         # do not set height if forced to empty string
         expect(data[2].get_attribute("height")).to is_opt ? be_falsy : eql("")
+
+        expect(data[2].get_attribute("width")).to eql("24")
       end
 
       context "when liquid arguments (e.g. 'width: 24') are present" do
