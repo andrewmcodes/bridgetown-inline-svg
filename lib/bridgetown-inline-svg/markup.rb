@@ -45,7 +45,7 @@ module BridgetownInlineSvg
     end
 
     def path
-      @path ||= matched['path'].sub(/^["']/, '').sub(/["']$/, '').strip
+      @path ||= matched["path"].sub(/^["']/, "").sub(/["']$/, "").strip
     end
 
     def params
@@ -76,11 +76,11 @@ module BridgetownInlineSvg
     # IE11 requires we have both width & height attributes
     # on SVG elements
     def params_set_height_if_missing!
-      @params[:height] = @params[:width] if @params.key?(:width) && @params[:width] != '' && !@params.key?(:height)
+      @params[:height] = @params[:width] if @params.key?(:width) && @params[:width] != "" && !@params.key?(:height)
     end
 
     def raw_params
-      @raw_params = matched['params'].strip
+      @raw_params = matched["params"].strip
     end
 
     def raise_exception!
