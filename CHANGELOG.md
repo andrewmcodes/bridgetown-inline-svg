@@ -2,7 +2,19 @@
 
 ## [Unreleased](https://github.com/andrewmcodes/bridgetown-inline-svg/tree/HEAD)
 
-[Full Changelog](https://github.com/andrewmcodes/bridgetown-inline-svg/compare/v1.0.0...HEAD)
+[Full Changelog](https://github.com/andrewmcodes/bridgetown-inline-svg/compare/v1.1.0...HEAD)
+
+**Closed issues:**
+
+- Unknown tag 'svg'  [\#7](https://github.com/andrewmcodes/bridgetown-inline-svg/issues/7)
+
+**Merged pull requests:**
+
+- feat: Extend Bridgetown::Builder over extending liquid [\#6](https://github.com/andrewmcodes/bridgetown-inline-svg/pull/6) ([MikeRogers0](https://github.com/MikeRogers0))
+
+## [v1.1.0](https://github.com/andrewmcodes/bridgetown-inline-svg/tree/v1.1.0) (2020-07-21)
+
+[Full Changelog](https://github.com/andrewmcodes/bridgetown-inline-svg/compare/v1.0.0...v1.1.0)
 
 **Merged pull requests:**
 
