@@ -18,6 +18,7 @@ end
 
 require "bridgetown"
 require File.expand_path("../lib/bridgetown-inline-svg", __dir__)
+Dir["./spec/support/**/*.rb"].sort.each { |f| require f }
 
 Bridgetown.logger.log_level = :error
 

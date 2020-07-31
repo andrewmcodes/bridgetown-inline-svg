@@ -1,58 +1,16 @@
 require "spec_helper"
 require "nokogiri"
 
-describe(BridgetownInlineSvg::SvgTag) do
-  def read(f)
-    File.read(dest_dir(f))
+describe(BridgetownInlineSvg) do
+  def read(file)
+    File.read(dest_dir(file))
   end
 
   # return an array of the page's svgs
-  def parse(f)
-    Nokogiri::HTML(read(f))
+  def parse(file)
+    Nokogiri::HTML(read(file))
   end
 
-  describe "#parse_params" do
-    it "parse XML root parameters" do
-      svg, params = BridgetownInlineSvg::SvgTag.parse_params("/path/to/foo size=40 style=\"hello\"")
-      expect(svg).to eq("/path/to/foo")
-      expect(params).to eq("size=40 style=\"hello\"")
-    end
-
-    it "accepts double quoted path" do
-      svg, _params = BridgetownInlineSvg::SvgTag.parse_params("\"/path/to/foo space\"")
-      expect(svg).to eq("/path/to/foo space")
-    end
-
-    it "accepts single quoted path" do
-      svg, _params = BridgetownInlineSvg::SvgTag.parse_params("'/path/to/foo space'")
-      expect(svg).to eq("/path/to/foo space")
-    end
-
-    it "strip leading and trailing spaces" do
-      svg, _params = BridgetownInlineSvg::SvgTag.parse_params(" /path/to/foo ")
-      expect(svg).to eql("/path/to/foo")
-    end
-
-    # required when a variable is defined with leading/trailing space then embedded.
-    it "strip in-quote leading and trailing spaces" do
-      svg, _params = BridgetownInlineSvg::SvgTag.parse_params("'/path/to/foo '")
-      expect(svg).to eql("/path/to/foo")
-    end
-
-    it "keep Liquid variables" do
-      svg, _params = BridgetownInlineSvg::SvgTag.parse_params("/path/to/{{foo}}")
-      expect(svg).to eql("/path/to/{{foo}}")
-    end
-
-    it "don't parse parameters" do
-      _svg, params = BridgetownInlineSvg::SvgTag.parse_params("'/path/to/foo space' id='bar' style=\"hello\"")
-      expect(params).to eq("id='bar' style=\"hello\"")
-    end
-
-    it "raise error on invalid syntax" do
-      expect { BridgetownInlineSvg::SvgTag.parse_params("") }.to raise_error SyntaxError
-    end
-  end
   [
     Bridgetown.configuration({
       "svg" => {"optimize" => true},
@@ -69,7 +27,8 @@ describe(BridgetownInlineSvg::SvgTag) do
     })
   ].each do |config|
     (is_opt = config["svg"]) && (config["svg"]["optimize"] == true)
-    describe "Integration (with #{is_opt ? "" : "no"} optimisation)" do
+
+    describe "Integration - #{is_opt ? "with" : "without"} optimization -" do
       before(:context) do
         site = Bridgetown::Site.new(config)
         site.process
@@ -79,7 +38,7 @@ describe(BridgetownInlineSvg::SvgTag) do
       end
 
       it "render site" do
-        expect(File.exist?(dest_dir("index.html"))).to be_truthy
+        expect(File.exist?(dest_dir("index.html"))).to eq(true)
       end
 
       it "exports svg" do
@@ -102,6 +61,18 @@ describe(BridgetownInlineSvg::SvgTag) do
         expect(data[2].get_attribute("height")).to is_opt ? be_falsy : eql("")
 
         expect(data[2].get_attribute("width")).to eql("24")
+      end
+
+      context "when liquid arguments (e.g. 'width: 24') are present" do
+        subject { @data.css("#liquid-arguments").css("svg") }
+
+        it "renders SVGs" do
+          expect(subject.count).to eq(2)
+        end
+
+        it "gives precedence to the equals arguments" do
+          expect(subject[1].get_attribute("width")).to eql("48")
+        end
       end
 
       it "keep attributes" do

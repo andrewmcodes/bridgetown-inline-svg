@@ -1,9 +1,8 @@
-# frozen_string_literal: true
-
 require "bridgetown"
+require "bridgetown-inline-svg/tag"
 
 module BridgetownInlineSvg
-  autoload :SvgTag, "bridgetown-inline-svg/svg-tag"
+  autoload :Markup, "bridgetown-inline-svg/markup"
+  autoload :RenderSvg, "bridgetown-inline-svg/render_svg"
+  autoload :RenderOptimizedSvg, "bridgetown-inline-svg/render_optimized_svg"
 end
-
-Liquid::Template.register_tag("svg", BridgetownInlineSvg::SvgTag)
