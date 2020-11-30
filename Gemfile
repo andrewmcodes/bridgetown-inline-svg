@@ -14,5 +14,5 @@ end
 group :test do
   gem "rspec", "~> 3.0"
   gem "coveralls", "~> 0.8.23"
-  gem "simplecov", "~> 0.16.1"
+  gem "simplecov", "~> 0.20.0"
 end
