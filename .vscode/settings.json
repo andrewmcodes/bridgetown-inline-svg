@@ -21,6 +21,7 @@
   "git.ignoreLimitWarning": true,
   "conventionalCommits.scopes": [
     "release",
-    "dependencies"
+    "dependencies",
+    "actions"
   ]
 }
