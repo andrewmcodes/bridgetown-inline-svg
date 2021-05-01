@@ -1,4 +1,0 @@
-#!/bin/bash
-
-echo "== Checking StandardRb =="
-bundle exec standardrb --format=progress

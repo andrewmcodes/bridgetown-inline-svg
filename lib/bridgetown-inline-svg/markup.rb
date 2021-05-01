@@ -7,7 +7,7 @@ module BridgetownInlineSvg
     PATH_SYNTAX = /
       ^(?<path>[^\s"']+|"[^"]+"|'[^']+')
       (?<params>.*)
-    /x.freeze
+    /x
 
     # Parse the first parameter in a string, giving :
     #  [full_match, param_name, double_quoted_val, single_quoted_val, unquoted_val]
@@ -22,7 +22,7 @@ module BridgetownInlineSvg
     PARAM_SYNTAX = /
     ([\w-]+)\s*=\s*
       (?:"([^"\\]*(?:\\.[^"\\]*)*)"|'([^'\\]*(?:\\.[^'\\]*)*)'|([\w.\-#]+))
-    /x.freeze
+    /x
 
     def self.parse(markup)
       new(markup).call

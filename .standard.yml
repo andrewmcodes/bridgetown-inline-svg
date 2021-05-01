@@ -1,0 +1,6 @@
+fix: true
+parallel: true
+format: progress
+ignore:
+  - "spec/spec_helper.rb":
+    - Lint/ConstantDefinitionInBlock
