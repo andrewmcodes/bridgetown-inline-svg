@@ -13,7 +13,7 @@ jobs:
         id: release
         with:
           release-type: ruby
-          package-name: release-please-demo
+          package-name: bridgetown-inline-svg
           bump-minor-pre-major: true
           version-file: "lib/bridgetown-inline-svg/version.rb"
       - uses: actions/checkout@v2
