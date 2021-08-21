@@ -1,34 +1,23 @@
+## ⚠️ Maintenance Mode
+
+This gem has been replace by [ayushn21/bridgetown-svg-inliner](https://github.com/ayushn21/bridgetown-svg-inliner) and will not be receiving further updates.
+
+Upgrade to [ayushn21/bridgetown-svg-inliner](https://github.com/ayushn21/bridgetown-svg-inliner) which has a MIT License and works with the latest versions of [Bridgetown, unlike this gem.](https://bridgetownrb.com)
+
+---
+
 <div align="center">
-  <img alt="Banner" width="100%" height="350" src="media/banner.png" />
   <h1>bridgetown-inline-svg</h1>
   <p>
     <a href="LICENSE" target="_blank">
       <img alt="License: GPL-3.0" src="https://img.shields.io/github/license/andrewmcodes/bridgetown-inline-svg" />
     </a>
     <a href="https://badge.fury.io/rb/bridgetown-inline-svg"><img src="https://badge.fury.io/rb/bridgetown-inline-svg.svg" alt="Gem Version" height="18"></a>
-    <a href="https://depfu.com"><img src="https://badges.depfu.com/badges/54fe87f2b14868b7c6e69aa0322e3764/status.svg" alt="Depfu"></a>
-    <a href="https://depfu.com/github/andrewmcodes/bridgetown-inline-svg?project_id=14094"><img src="https://badges.depfu.com/badges/54fe87f2b14868b7c6e69aa0322e3764/count.svg" alt="Depfu"></a>
-    <a href="https://codeclimate.com/github/andrewmcodes/bridgetown-inline-svg/maintainability"><img src="https://api.codeclimate.com/v1/badges/f9756d6568f43c7a407b/maintainability" /></a>
-    <a href="https://www.codacy.com/manual/andrewmcodes/bridgetown-inline-svg?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=andrewmcodes/bridgetown-inline-svg&amp;utm_campaign=Badge_Grade"><img src="https://app.codacy.com/project/badge/Grade/caad1b16367242ff973fe2e977985364" alt="Codacy Badge"></a>
-    <a href='https://coveralls.io/github/andrewmcodes/bridgetown-inline-svg?branch=main'><img src='https://coveralls.io/repos/github/andrewmcodes/bridgetown-inline-svg/badge.svg?branch=main' alt='Coverage Status' /></a>
     <img alt="Tests" src="https://github.com/andrewmcodes/bridgetown-inline-svg/workflows/Tests/badge.svg" />
     <img alt="Linters" src="https://github.com/andrewmcodes/bridgetown-inline-svg/workflows/Linters/badge.svg" />
     <img alt="Changelog" src="https://github.com/andrewmcodes/bridgetown-inline-svg/workflows/Changelog/badge.svg" />
   </p>
 </div>
-
-- [Installation](#installation)
-- [Optional Configuration](#optional-configuration)
-- [Demo](#demo)
-- [Usage](#usage)
-  - [Attributes](#attributes)
-    - [Height and Width](#height-and-width)
-  - [Paths](#paths)
-  - [Variables](#variables)
-  - [Optimizations](#optimizations)
-- [Contributing](#contributing)
-- [Acknowledgement](#acknowledgement)
-- [License](#license)
 
 ## Installation
 
@@ -59,12 +48,6 @@ svg:
   # Default: false
   optimize: true
 ```
-
-## Demo
-
-[bridgetown-inline-svg-starter](https://github.com/andrewmcodes/bridgetown-inline-svg-starter)
-
-This starter can be used to reproduce issues as well as provide an example of the plugin's usage.
 
 ## Usage
 
