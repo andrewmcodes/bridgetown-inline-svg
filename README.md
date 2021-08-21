@@ -1,34 +1,23 @@
+## ⚠️ Maintenance Mode
+
+This gem has been replaced by [ayushn21/bridgetown-svg-inliner] and will not be receiving further updates.
+
+Upgrade to [ayushn21/bridgetown-svg-inliner] which has a MIT License and works with the latest versions of Bridgetown.
+
+---
+
 <div align="center">
-  <img alt="Banner" width="100%" height="350" src="media/banner.png" />
   <h1>bridgetown-inline-svg</h1>
   <p>
     <a href="LICENSE" target="_blank">
       <img alt="License: GPL-3.0" src="https://img.shields.io/github/license/andrewmcodes/bridgetown-inline-svg" />
     </a>
     <a href="https://badge.fury.io/rb/bridgetown-inline-svg"><img src="https://badge.fury.io/rb/bridgetown-inline-svg.svg" alt="Gem Version" height="18"></a>
-    <a href="https://depfu.com"><img src="https://badges.depfu.com/badges/54fe87f2b14868b7c6e69aa0322e3764/status.svg" alt="Depfu"></a>
-    <a href="https://depfu.com/github/andrewmcodes/bridgetown-inline-svg?project_id=14094"><img src="https://badges.depfu.com/badges/54fe87f2b14868b7c6e69aa0322e3764/count.svg" alt="Depfu"></a>
-    <a href="https://codeclimate.com/github/andrewmcodes/bridgetown-inline-svg/maintainability"><img src="https://api.codeclimate.com/v1/badges/f9756d6568f43c7a407b/maintainability" /></a>
-    <a href="https://www.codacy.com/manual/andrewmcodes/bridgetown-inline-svg?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=andrewmcodes/bridgetown-inline-svg&amp;utm_campaign=Badge_Grade"><img src="https://app.codacy.com/project/badge/Grade/caad1b16367242ff973fe2e977985364" alt="Codacy Badge"></a>
-    <a href='https://coveralls.io/github/andrewmcodes/bridgetown-inline-svg?branch=main'><img src='https://coveralls.io/repos/github/andrewmcodes/bridgetown-inline-svg/badge.svg?branch=main' alt='Coverage Status' /></a>
     <img alt="Tests" src="https://github.com/andrewmcodes/bridgetown-inline-svg/workflows/Tests/badge.svg" />
     <img alt="Linters" src="https://github.com/andrewmcodes/bridgetown-inline-svg/workflows/Linters/badge.svg" />
     <img alt="Changelog" src="https://github.com/andrewmcodes/bridgetown-inline-svg/workflows/Changelog/badge.svg" />
   </p>
 </div>
-
-- [Installation](#installation)
-- [Optional Configuration](#optional-configuration)
-- [Demo](#demo)
-- [Usage](#usage)
-  - [Attributes](#attributes)
-    - [Height and Width](#height-and-width)
-  - [Paths](#paths)
-  - [Variables](#variables)
-  - [Optimizations](#optimizations)
-- [Contributing](#contributing)
-- [Acknowledgement](#acknowledgement)
-- [License](#license)
 
 ## Installation
 
@@ -38,7 +27,7 @@ Run this command to add this plugin to your site's Gemfile:
 bundle add bridgetown-inline-svg -g bridgetown_plugins
 ```
 
-or add the following to your `Gemfile`:
+Or add the following to your `Gemfile`:
 
 ```ruby
 group :bridgetown_plugins do
@@ -60,17 +49,11 @@ svg:
   optimize: true
 ```
 
-## Demo
-
-[bridgetown-inline-svg-starter](https://github.com/andrewmcodes/bridgetown-inline-svg-starter)
-
-This starter can be used to reproduce issues as well as provide an example of the plugin's usage.
-
 ## Usage
 
 This plugin provides the `svg` Liquid tag to your site.
 
-Use the tag in your pages, collections, components, etc. by passing the tag the name of a file:
+Use the tag in your pages, collections, and components by passing the tag the name of a file:
 
 ```liquid
 {% svg path/to/my.svg %}
@@ -80,9 +63,7 @@ Use the tag in your pages, collections, components, etc. by passing the tag the 
 
 ### Attributes
 
-Set attributes just like you would in HTML.
-
-For example:
+Set attributes like you would in HTML:
 
 ```liquid
 {% svg assets/svg/square.svg width=24 class="text-indigo-600" foo="bar" %}
@@ -96,11 +77,11 @@ Bridgetown will include the SVG file in your output HTML like this:
 </svg>
 ```
 
-**Note**: Anything can be passed through, but we'd recommend only setting [valid attributes](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg#Attributes).
+**Note**: Anything can be passed through, but we'd recommend setting [valid attributes].
 
 #### Height and Width
 
-`height` is automatically set to match `width` if omitted, and vice versa. Height specifically can't be left unset because IE11 won't use the viewport attribute to calculate the image's aspect ratio.
+`height` is automatically set to match `width` if omitted, and vice versa. Height cannot be left unset because IE11 won't use the viewport attribute to calculate the image's aspect ratio.
 
 ### Paths
 
@@ -112,14 +93,14 @@ Paths with a space should be quoted with single or double quotes:
 
 If the path is not in quotes, anything after the __first space__ will be considered an attribute.
 
-Relative paths and absolute paths will both be interpreted from Bridgetown's `src` directory. So both:
+Relative paths and absolute paths will both be interpreted from Bridgetown's `src` directory:
 
 ```liquid
 {% svg "/path/to/my.svg" %}
 {% svg "path/to/my.svg" %}
 ```
 
-Should resolve to `/your/site/src/path/to/my.svg` and are equivalent.
+Should resolve to `/your/site/src/path/to/my.svg`.
 
 ### Variables
 
@@ -131,16 +112,16 @@ Liquid variables will be interpolated if enclosed in double brackets:
 {% svg "/path/to/{{svg_name}}.svg" width="{{size}}" %}
 ```
 
-This is especially helpful inside of Liquid components!
+This is helpful inside of Liquid components!
 
 ### Optimizations
 
-Some processing is done to remove useless data when enabled:
+Processing is done to remove useless data when enabled in the Bridgetown config:
 
 - metadata
 - comments
 - unused groups
-- Other filters from [svg_optimizer](https://github.com/fnando/svg_optimizer)
+- Other filters from [svg_optimizer]
 - default size
 
 If any important data gets removed, or the output SVG looks different from input, it's a bug. Please file an issue to this repository describing your problem.
@@ -149,15 +130,26 @@ It does not perform any input validation on attributes. They will be appended as
 
 ## Contributing
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/andrewmcodes/bridgetown-inline-svg/issues). You can also take a look at the [contributing guide](https://github.com/andrewmcodes/bridgetown-inline-svg/blob/main/CONTRIBUTING.md).
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page]. You can take a look at the [contributing guide].
 
 ## Acknowledgement
 
-This project was initially forked from [jekyll-inline-svg](https://github.com/sdumetz/jekyll-inline-svg).
+This project was initially forked from [jekyll-inline-svg].
 
 ## License
 
-Copyright © 2017-2020 [Sebastien Dumetz](https://github.com/sdumetz)
-Copyright © 2020 [Andrew Mason](https://github.com/andrewmcodes)
+Copyright © 2017-2020 [Sebastien Dumetz]
+Copyright © 2020 [Andrew Mason]
 
-The following code is a derivative work of the code from the [jekyll-inline-svg](https://github.com/sdumetz/jekyll-inline-svg) project, which is licensed GPLv3. This code therefore is also licensed under the terms of the GNU Public License, verison 3.
+The following code is a derivative work of the code from the [jekyll-inline-svg] project, which is licensed GPLv3. This code therefore is also licensed under the terms of the GNU Public License, verison 3.
+
+
+[ayushn21/bridgetown-svg-inliner]: https://github.com/ayushn21/bridgetown-svg-inliner
+[Bridgetown, unlike this gem.]: https://bridgetownrb.com
+[valid attributes]: https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg#Attributes
+[svg_optimizer]: https://github.com/fnando/svg_optimizer
+[issues page]: https://github.com/andrewmcodes/bridgetown-inline-svg/issues
+[contributing guide]: https://github.com/andrewmcodes/bridgetown-inline-svg/blob/main/CONTRIBUTING.md
+[jekyll-inline-svg]: https://github.com/sdumetz/jekyll-inline-svg
+[Sebastien Dumetz]: https://github.com/sdumetz
+[Andrew Mason]: https://github.com/andrewmcodes
