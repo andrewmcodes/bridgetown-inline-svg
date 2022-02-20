@@ -1,8 +1,8 @@
-## ⚠️ Maintenance Mode
+## 🚨 Archived
 
-This gem has been replaced by [ayushn21/bridgetown-svg-inliner] and will not be receiving further updates.
+This gem has been replaced by [ayushn21/bridgetown-svg-inliner] and has now been archived since it will not be receiving any future updates as Bridgetown v1.0.0 approaches, which will not be compatible with this gem.
 
-Upgrade to [ayushn21/bridgetown-svg-inliner] which has a MIT License and works with the latest versions of Bridgetown.
+**Upgrade to [ayushn21/bridgetown-svg-inliner] which has a MIT License and works with the latest versions of Bridgetown.**
 
 ---
 
@@ -13,9 +13,6 @@ Upgrade to [ayushn21/bridgetown-svg-inliner] which has a MIT License and works w
       <img alt="License: GPL-3.0" src="https://img.shields.io/github/license/andrewmcodes/bridgetown-inline-svg" />
     </a>
     <a href="https://badge.fury.io/rb/bridgetown-inline-svg"><img src="https://badge.fury.io/rb/bridgetown-inline-svg.svg" alt="Gem Version" height="18"></a>
-    <img alt="Tests" src="https://github.com/andrewmcodes/bridgetown-inline-svg/workflows/Tests/badge.svg" />
-    <img alt="Linters" src="https://github.com/andrewmcodes/bridgetown-inline-svg/workflows/Linters/badge.svg" />
-    <img alt="Changelog" src="https://github.com/andrewmcodes/bridgetown-inline-svg/workflows/Changelog/badge.svg" />
   </p>
 </div>
 
